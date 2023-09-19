@@ -7,12 +7,12 @@ public class ChangeColor : MonoBehaviour
     [SerializeField] bool colorBlue = true;
     public List<GameObject> red = new List<GameObject>();
     public List<GameObject> blue = new List<GameObject>();
-    
+
     public void changeColor()
     {
-        if(colorBlue == true)
+        if (colorBlue == true)
         {
-            for(int i = 0; i < red.Count; i++)
+            for (int i = 0; i < red.Count; i++)
             {
                 blue[i].SetActive(true);
                 red[i].SetActive(false);

@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class BoxFollowing : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] 
+    int speed = 2;
+
+    GameObject target;
+    Vector3 dir;
+    private void Start()
     {
-        
+        target = GameObject.Find("WOW");
+        dir = target.transform.position - transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        Following();
+    }
+
+    void Following()
+    {
+        transform.position += dir * speed * Time.deltaTime;
+        dir.Normalize();
+
+        if(Vector3.Distance(transform.position, target.transform.position) < 0.01f)
+        {
+            Destroy(gameObject);
+        }
     }
 }
