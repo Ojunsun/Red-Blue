@@ -6,9 +6,10 @@ public class BoxFollowing : MonoBehaviour
 {
     [SerializeField] 
     int speed = 2;
-
+    
     GameObject target;
     Vector3 dir;
+
     private void Start()
     {
         target = GameObject.Find("WOW");
