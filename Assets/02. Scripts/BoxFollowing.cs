@@ -6,9 +6,15 @@ public class BoxFollowing : MonoBehaviour
 {
     [SerializeField] 
     int speed = 2;
-    
+
     GameObject target;
     Vector3 dir;
+    Rigidbody2D rigid;
+
+    private void Awake()
+    {
+        rigid = GetComponent<Rigidbody2D>();
+    }
 
     private void Start()
     {
@@ -16,17 +22,17 @@ public class BoxFollowing : MonoBehaviour
         dir = target.transform.position - transform.position;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Following();
     }
 
     void Following()
     {
-        transform.position += dir * speed * Time.deltaTime;
+        rigid.velocity = dir * speed;
         dir.Normalize();
 
-        if(Vector3.Distance(transform.position, target.transform.position) < 0.01f)
+        if(Vector3.Distance(transform.position, target.transform.position) < 0.1f)
         {
             Destroy(gameObject);
         }

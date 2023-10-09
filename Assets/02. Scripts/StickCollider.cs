@@ -13,7 +13,6 @@ public class StickCollider : MonoBehaviour
         Destroy(collision.gameObject);
 
         scoreManager.currentScore++;
-
         scoreManager.currentScoreTextUI.text = "" + scoreManager.currentScore;
     }
 }
