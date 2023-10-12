@@ -6,6 +6,8 @@ public class BoxFollowing : MonoBehaviour
 {
     [SerializeField] 
     int speed = 2;
+    [SerializeField]
+    GameObject _brokenparticle;
 
     GameObject target;
     Vector3 dir;
@@ -36,5 +38,19 @@ public class BoxFollowing : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject smObject = GameObject.Find("ScoreManager");
+        ScoreManager scoreManager = smObject.GetComponent<ScoreManager>();
+
+        Destroy(gameObject);
+
+        scoreManager.currentScore++;
+        scoreManager.currentScoreTextUI.text = "" + scoreManager.currentScore;
+
+        GameObject _broken = Instantiate(_brokenparticle);
+        _broken.transform.position = transform.position;                    
     }
 }

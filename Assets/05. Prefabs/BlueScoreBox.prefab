@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  particle: {fileID: 2079152854258619368, guid: 6f1e98df65b255a4093a4f595e7a31e7, type: 3}
+  _brokenparticle: {fileID: 2079152854258619382, guid: 6f1e98df65b255a4093a4f595e7a31e7, type: 3}
 --- !u!61 &-6618065539400209445
 BoxCollider2D:
   m_ObjectHideFlags: 0
