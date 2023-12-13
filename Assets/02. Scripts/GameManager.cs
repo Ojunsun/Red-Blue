@@ -5,34 +5,45 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private bool isStart = false;
-    [SerializeField] private Canvas _inGameCanvas;
+    public static GameManager Instance;
+
+    [SerializeField] private GameObject _inGameCanvas;
+    [SerializeField] private GameObject _lobbyCanvas;
+    [SerializeField] private GameObject _gameOverCanvas;
     [SerializeField] private GameObject _ingameObj;
-    [SerializeField] private Canvas _lobbyCanvas;
+    public bool isStart;
 
     private void Awake()
     {
-
+        if(Instance == null)
+        {
+            Instance = this;
+        }
     }
 
-    private void Update()
+    private void Start()
     {
-        GameStart();
+        _lobbyCanvas.SetActive(true);
+        _ingameObj.SetActive(false);
+        _inGameCanvas.SetActive(false);
+        _gameOverCanvas.SetActive(false);
     }
 
-    private void GameStart()
+    public void GameStart()
     {
-        if (isStart == true)
-        {
-            _ingameObj.SetActive(true);
-            _inGameCanvas.enabled = true;
-            _lobbyCanvas.enabled = false;
-        }
-        else
-        {
-            _ingameObj.SetActive(false);
-            _inGameCanvas.enabled = false;
-            _lobbyCanvas.enabled = true;
-        }
+        isStart = true;
+        _ingameObj.SetActive(true);
+        _inGameCanvas.SetActive(true);
+        _gameOverCanvas.SetActive(false);
+        _lobbyCanvas.SetActive(false);
+    }
+
+    public void GameOver()
+    {
+        isStart = false;
+        _ingameObj.SetActive(false);
+        _gameOverCanvas.SetActive(true);
+        _inGameCanvas.SetActive(false);
+        _lobbyCanvas.SetActive(false);
     }
 }

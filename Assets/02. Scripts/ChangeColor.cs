@@ -8,10 +8,11 @@ public class ChangeColor : MonoBehaviour
     public List<GameObject> red = new List<GameObject>();
     public List<GameObject> blue = new List<GameObject>();
 
+
     public void changeColor()
     {
-        if (colorBlue == true)
-        {
+        if (colorBlue == true )
+        {   
             for (int i = 0; i < red.Count; i++)
             {
                 blue[i].SetActive(true);
@@ -19,7 +20,7 @@ public class ChangeColor : MonoBehaviour
             }
             colorBlue = false;
         }
-        else
+        else if(colorBlue == false )
         {
             for (int i = 0; i < blue.Count; i++)
             {

@@ -37,6 +37,7 @@ public class BoxFollowing : MonoBehaviour
         if(Vector3.Distance(transform.position, target.transform.position) < 0.1f)
         {
             Destroy(gameObject);
+            GameManager.Instance.GameOver();
         }
     }
 
@@ -51,6 +52,7 @@ public class BoxFollowing : MonoBehaviour
         scoreManager.currentScoreTextUI.text = "" + scoreManager.currentScore;
 
         GameObject _broken = Instantiate(_brokenparticle);
-        _broken.transform.position = transform.position;                    
+        _broken.transform.position = transform.position;
+
     }
 }
